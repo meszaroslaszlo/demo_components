@@ -1,0 +1,7 @@
+<app-third (sendMessageToAppComponent)="sendMessageToParentFromThirdComponent($event)"></app-third>
+<h3>
+  Név:
+  <span>{{ name?name:defaultName }}</span>
+</h3>
+<p>asdffasdfasdfasdfasdf</p>
+<button (click)="sendMessageToParent()">Üzenek a szülő komponensek a Hello komponensből!</button>
