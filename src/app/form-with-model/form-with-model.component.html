@@ -1,5 +1,38 @@
-<input type="text" [(ngModel)]="name" (ngModelChange)="onChange($event)">
-
-<p *ngIf="name">Szia {{name}}</p>
-
-<button (click)="renameYou()" [disabled]="!name">Most átnevezlek téged</button>
+<div class="form-container">
+  <div class="form-input">
+    <label for="lastName">Email:</label>
+    <input id="lastName" type="text" [(ngModel)]="myFirstuser.lastName">
+  </div>
+  <div class="form-input">
+    <label for="firstName">Utónév:</label>
+    <input id="firstName" type="text" [(ngModel)]="myFirstuser.firstName">
+  </div>
+  <div class="form-input">
+    <p for="firstName">Neme:</p>
+    <span>Férfi:
+      <input type="radio" [(ngModel)]="myFirstuser.gender" [value]="gender.Male">
+    </span>
+    <span>Nő:
+      <input type="radio" [(ngModel)]="myFirstuser.gender" [value]="gender.Female">
+    </span>
+    <span>Egyéb:
+      <input type="radio" [(ngModel)]="myFirstuser.gender" [value]="gender.Other">
+    </span>
+  </div>
+  <div class="form-input">
+    <p>Születési ország:</p>
+    <select [(ngModel)]="myFirstuser.country">
+      <option *ngFor="let country of countries" [ngValue]="country">
+        {{ country.name }}
+      </option>
+    </select>
+  </div>
+  <div class="form-input">
+    <p>Kor:</p>
+    <input type="number" [(ngModel)]="myFirstuser.age">
+  </div>
+  <div class="buttons">
+    <button (click)="onCancel()">Mégse</button>
+    <button (click)="onSubmit()" [disabled]="!formIsValid()">Mentés</button>
+  </div>
+</div>
